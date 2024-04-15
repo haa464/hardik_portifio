@@ -137,6 +137,7 @@ svg.button__dicon {
     width: 355px;
     height: 434px;
     animation: profile__animate 8s ease-in-out infinite 1s;
+    filter: grayscale(150%);
 }
 
 @keyframes profile__animate {
