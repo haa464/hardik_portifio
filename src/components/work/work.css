@@ -213,12 +213,49 @@
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+  .work__filters {
+    gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+
+  .work__item {
+    padding: 6px 14px;
+    font-size: 0.813rem;
+  }
+
   .work__container {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
+    padding: 0 4px;
+  }
+
+  .work__card {
+    padding: 14px;
+    border-radius: 14px;
   }
 
   .work__img-box {
     height: 180px;
+    border-radius: 10px;
+  }
+
+  .work__title {
+    font-size: 1rem;
+  }
+
+  .work__subtitle {
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+  }
+
+  .work_link {
+    gap: 8px;
+  }
+
+  .work__button {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 0.78rem;
   }
 }

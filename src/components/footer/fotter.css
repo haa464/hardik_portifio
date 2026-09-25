@@ -88,7 +88,7 @@
 
 @media screen and (max-width: 768px) {
   .footer__container {
-    padding-bottom: 7rem; /* room for mobile bottom nav bar */
+    padding: 3rem 1.25rem 3.5rem;
   }
 
   .footer__list {

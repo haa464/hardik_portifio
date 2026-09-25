@@ -303,3 +303,33 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1aa;
 }
+
+/*=============== GLOBAL MOBILE ADJUSTMENTS ===============*/
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 4.75rem 0 2rem;
+  }
+
+  .section__subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .block {
+    border-radius: 16px;
+  }
+
+  .block-paddings {
+    padding: 16px 14px 22px;
+  }
+
+  .button-dark,
+  .button-light {
+    padding: 9px 16px;
+    font-size: 0.813rem;
+  }
+}
