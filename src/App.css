@@ -1,40 +1,38 @@
 /*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-  --header-height: 3rem;
+  --header-height: 3.5rem;
 
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
   --hue: 0;
   --sat: 0%;
-  --title-color: hsl(var(--hue), var(--sat), 20%);
-  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
-  --text-color: hsl(var(--hue), var(--sat), 46%);
-  --body-color: hsl(var(--hue), var(--sat), 98%);
-  --container-color: #fff;
+  --title-color: #111111;
+  --title-color-dark: #000000;
+  --text-color: #55555c;
+  --body-color: #f8f8fa;
+  --container-color: #ffffff;
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
 
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --big-font-size: 3.5rem;
+  --big-font-size: 3.25rem;
   --h1-font-size: 2.25rem;
   --h2-font-size: 1.5rem;
   --h3-font-size: 1.25rem;
   --normal-font-size: 1rem;
   --small-font-size: 0.875rem;
   --smaller-font-size: 0.813rem;
-  --tiny-font-size: 0.625rem;
+  --tiny-font-size: 0.688rem;
 
   /*========== Font weight ==========*/
   --font-normal: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
+  --font-bold: 700;
 
-  /*========== Margenes Bottom ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
+  /*========== Margins Bottom ==========*/
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -53,10 +51,10 @@
 /* Responsive typography */
 @media screen and (max-width: 992px) {
   :root {
-    --big-font-size: 2.75rem;
-    --h1-font-size: 1.5rem;
+    --big-font-size: 2.5rem;
+    --h1-font-size: 1.75rem;
     --h2-font-size: 1.25rem;
-    --h3-font-size: 1rem;
+    --h3-font-size: 1.1rem;
     --normal-font-size: 0.938rem;
     --small-font-size: 0.813rem;
     --smaller-font-size: 0.75rem;
@@ -72,6 +70,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body,
@@ -83,15 +83,20 @@ textarea {
 }
 
 body {
-  /* background-color: var(--body-color); */
-  background-color: #f9f9f9;
-
+  background-color: var(--body-color);
   color: var(--text-color);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #111111;
+  color: #ffffff;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
 }
@@ -115,26 +120,34 @@ img {
   height: auto;
 }
 
-
 .max-width-600 {
   width: 100%;
   max-width: 600px;
 }
 
+.max-width-400 {
+  width: 100%;
+  max-width: 400px;
+}
+
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
-  padding: 6rem 0 2rem;
+  padding: 6.5rem 0 3rem;
 }
 
 .section__title {
   font-size: var(--h1-font-size);
   color: var(--title-color);
+  letter-spacing: -0.5px;
+  font-weight: 700;
 }
 
 .section__subtitle {
   display: block;
   font-size: var(--small-font-size);
-  margin-bottom: 4rem;
+  color: #777782;
+  margin-top: 0.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .section__title,
@@ -147,6 +160,8 @@ img {
   max-width: 968px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .grid {
@@ -158,27 +173,37 @@ img {
 .button {
   display: inline-block;
   background-color: var(--title-color);
-  color: var(--container-color);
-  padding: 1.25rem 2rem;
-  border-radius: 1rem;
+  color: #ffffff;
+  padding: 1rem 1.75rem;
+  border-radius: 12px;
   font-weight: var(--font-medium);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .button-dark {
-    display: flex;
-    background-color: var(--title-color-dark);
-    color: var(--container-color);
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-weight: var(--font-medium);
+  display: flex;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 11px 20px;
+  border-radius: 12px;
+  font-weight: var(--font-medium);
+  font-size: 0.875rem;
 }
 
 .button-light {
-  background-color: #ededee;
-  color: var(--title-color-dark);
-  padding: 10px 16px;
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid #ededee;
+  padding: 11px 20px;
   border-radius: 12px;
   font-weight: var(--font-medium);
+  font-size: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.button-light:hover {
+  background-color: #f4f4f6;
+  border-color: #dcdce0;
 }
 
 .button:hover {
@@ -192,14 +217,22 @@ img {
 .button--flex {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
 }
 
-/*=============== block ===============*/
+/*=============== CARDS & BLOCKS ===============*/
 .block {
   border: 1px solid #ededee;
-  background-color: white;
-  border-radius: 16px;
+  background-color: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.block:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border-color: #dcdce0;
 }
 
 .block-paddings {
@@ -207,41 +240,66 @@ img {
 }
 
 .box_wraper {
-    border: 1px solid #ededee;
-    background-color: #f6f6f6;
-    border-radius: 12px;
-    padding: 14px;
+  border: 1px solid #ededee;
+  background-color: #f6f6f8;
+  border-radius: 12px;
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .block-icon-wrapper {
-  border: 1px solid var(--grey-8);
-  background-color: var(--grey-4);
+  border: 1px solid #ededee;
+  background-color: #f6f6f8;
   border-radius: 12px;
   justify-content: center;
   align-items: center;
-  padding: 14px;
+  padding: 12px;
   display: flex;
 }
 
 .info_detail {
-  grid-column-gap: 48px;
-  grid-row-gap: 48px;
+  gap: 20px;
   flex-direction: column;
   align-items: flex-start;
   display: flex;
 }
 
-.block-icon-wrapper {
-  border: 1px solid #ededee;
-  background-color: #f6f6f6;
-  border-radius: 12px;
-  justify-content: center;
-  align-items: center;
-  padding: 14px;
-  display: flex;
+/*=============== SCROLL REVEAL ANIMATIONS ===============*/
+.reveal-element {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.ul-block li {
-  list-style: disc;
-  margin-bottom: var(--mb-1);
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Stagger helper for children */
+.reveal-visible.experience-item,
+.reveal-visible.skill__card,
+.reveal-visible.work__card {
+  transition-delay: 0.08s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c7cc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
 }

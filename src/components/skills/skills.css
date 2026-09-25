@@ -1,99 +1,150 @@
+/*=============== SKILLS STYLES & ANIMATIONS ===============*/
+.skills__filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.skills__filter-btn {
+  background-color: #ffffff;
+  color: #63636e;
+  border: 1px solid #ededee;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.skills__filter-btn:hover {
+  color: #111111;
+  border-color: #d0d0d5;
+  transform: translateY(-2px);
+}
+
+.active-skill-filter {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border-color: #111111 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
 .skills__container {
-    display: flex;
-    grid-template-columns: repeat (2, 350px);
-    column-gap: 3rem;
-    justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+  max-width: 968px;
+  margin: 0 auto;
 }
 
-.skills__content {
-    background-color: var(--container-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 2rem 4rem;
-    border-radius: 1.25rem;
- }
-
-.skills__title {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
-    text-align: center;
-    margin-bottom: var(--mb-1-5);
+.skill__card {
+  background-color: #ffffff;
+  border: 1px solid #ededee;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  animation: skillFadeIn 0.35s ease forwards;
 }
 
-.skills__box {
-    display: flex;
-    justify-content: center;
-    column-gap: 2.5rem;
+@keyframes skillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.skills__group {
-    display: grid;
-    align-items: flex-start;
-    row-gap: 1rem;
+.skill__card:hover {
+  transform: translateY(-4px);
+  border-color: #111111;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
-.skills__data {
-    display: flex;
-    column-gap: 0.5rem;
+.skill__icon-wrapper {
+  width: 44px;
+  height: 44px;
+  background-color: #f6f6f8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.skills .bx-badge-check {
-    font-size: 1rem;
-    color: var(--title-color);
+.skill__card:hover .skill__icon-wrapper {
+  background-color: #111111;
 }
 
-.skills__name {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
-    line-height: 18px;
+.skill__icon {
+  font-size: 1.45rem;
+  color: #222226;
+  transition: all 0.3s ease;
 }
 
-.skills__level {
-    font-size: var(--tiny-font-size);
+.skill__card:hover .skill__icon {
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
-.ul-skills {
-    display: flex;
+.skill__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.skill__name {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.25;
+}
+
+.skill__level {
+  font-size: 0.75rem;
+  color: #888890;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .skills__container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .skill__card {
+    padding: 14px 14px;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 80%;
+  }
+
+  .skill__icon-wrapper {
+    width: 38px;
+    height: 38px;
+  }
+
+  .skill__icon {
+    font-size: 1.25rem;
+  }
+
+  .skill__name {
+    font-size: 0.875rem;
+  }
 }
 
-.ul-skills li {
-    border: 1px solid #ededee;
-    background-color: white;
-    border-radius: 4px;
-    padding: 8px;
-    font-weight: normal;
-}
-
-@media screen and (max-width: 992px) {
-
-    .skills_container {
-        grid-template-columns: max-content;
-        row-gap: 2rem;
-    }
-
-}
-
-
-@media screen and (max-width: 576px) {
-    .skills_container {
-        grid-template-columns: 1fr;
-    }  
-
-    .skills__content {
-        padding: 1.5rem;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    
-    .skills__box {
-        column-gap: 1.25rem;
-    }
-
-    .skills__name {
-        font-size: var(--small-font-size);
-    }
+@media screen and (max-width: 480px) {
+  .skills__container {
+    grid-template-columns: 1fr;
+  }
 }

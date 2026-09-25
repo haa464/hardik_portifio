@@ -1,21 +1,40 @@
-import React from 'react'
-import './scrollup.css'
+import React, { useState, useEffect } from 'react';
+import './scrollup.css';
 
 const Scrollup = () => {
-    window.addEventListener("scroll", function () {
-        const scrollUp = document.querySelector(".scrollup")
-        if (this.scrollY >= 560) scrollUp.classList.add("show-scroll");
-        else scrollUp.classList.remove("show-scroll")
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 400) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
+  };
 
-    
   return (
-    <>
-    <a href="/" className="scrollup">
-        <i className="uil uil-arrow-up scrollup__icon"></i>
-    </a>
-    </>
-  )
-}
+    <button
+      type="button"
+      onClick={scrollToTop}
+      className={`scrollup ${showScroll ? "show-scroll" : ""}`}
+      aria-label="Scroll to top"
+    >
+      <i className="uil uil-arrow-up scrollup__icon"></i>
+    </button>
+  );
+};
 
-export default Scrollup
+export default Scrollup;

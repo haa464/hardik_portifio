@@ -1,212 +1,531 @@
-.about__container {
-    display: flex;
-    grid-template-columns: repeat (2, 1fr);
-    align-items: center;
-    column-gap: 4rem;
-}
-
-.about__img {
-    width: 350px;
-    border-radius: 1.5rem;
-    justify-self: center;
-} 
-
-.about__info {
-    display: flex;
-    grid-template-columns: repeat (3, 140px);
-    gap: 0.5rem;
-    margin-bottom: var(--mb-2);
-}
-
-.about__box { 
-    background-color: var(--container-color);
-    border: 1px solid Orgba(0, 0, 0, 0.1);
-    border-radius: 0.75rem;
-    text-align: center;
-    padding: 1rem 1.25rem;
-}
-
-.about__icon {
-    font-size: 1.5rem;
-    color: var( --title-color);
-    margin-bottom: var(--mb-0-5);
-}
-
-.about__title {
-    font-size: var(--small-font-size);
-    font-weight: var(--font-medium);
-}
-
-.about__subtitle {
-    font-size: var(--tiny-font-size);
-}
-
-.about__description {
-    padding: 0 4rem 0 0;
-    padding-bottom: var(--mb-2-5);
-}
-
+/*=============== ABOUT & EXPERIENCE STYLES ===============*/
 .block-header {
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    border-bottom: 1px solid #ededee;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 24px 32px;
-    display: flex;
+  border-bottom: 1px solid #ededee;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.block-header-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.tab-header-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.block-header:hover .tab-header-icon {
+  transform: scale(1.1);
+}
+
+.experience-intro {
+  color: #6c6c75;
+  font-size: 0.938rem;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Tab Toggle Button Group */
+.experience-tabs-wrapper {
+  display: flex;
+  gap: 10px;
+  background-color: #f4f4f6;
+  padding: 6px;
+  border-radius: 12px;
+  width: fit-content;
+  border: 1px solid #ededee;
+}
+
+.exp-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6c6c75;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+}
+
+.exp-tab-btn:hover {
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.exp-tab-active {
+  background-color: #ffffff !important;
+  color: #111 !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.exp-tab-icon {
+  font-size: 1.1rem;
+}
+
+.exp-tab-badge {
+  font-size: 0.72rem;
+  background-color: #ededee;
+  color: #444;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.exp-tab-active .exp-tab-badge {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Animated Tab Content */
+.tab-content-animated {
+  animation: tabFadeSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Experience Timeline Structure */
 .experience-block-wrapper {
-    flex-direction: row;
-    padding: 32px 24px 40px 32px;
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  padding: 36px 28px 40px 32px;
+  position: relative;
 }
 
 .experience-line-wrapper {
-    padding-top: 4px;
+  padding-top: 8px;
+  position: relative;
 }
 
 .experience-line {
-    width: 2px;
-    height: 100%;
-    background-color: #f6f6f6;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #111 0%, #dcdce0 80%, transparent 100%);
+  border-radius: 2px;
 }
 
 .experience-items-wrapper {
-    width: 100%;
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
-    flex-direction: column;
-    margin-left: -6px;
-    display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-left: -7px;
 }
 
 .experience-item {
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    align-items: flex-start;
-    display: flex;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  transition: transform 0.3s ease;
 }
 
+.experience-item:hover {
+  transform: translateX(4px);
+}
+
+/* Timeline Ellipse & Pulse Ring */
 .experience-item-ellipse-wrapper {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4px;
-    display: flex;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 .experience-item-ellipse {
-    width: 6px;
-    height: 6px;
-    background-color: #8e8e92;
-    border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #8e8e92;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
+.ellipse-current {
+  background-color: #000000;
+  box-shadow: 0 0 0 2px #000000;
+}
+
+.ellipse-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  animation: pulseRipple 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseRipple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.experience-item:hover .experience-item-ellipse {
+  background-color: #111;
+  transform: scale(1.25);
+}
+
+/* Experience Item Content */
 .experience-item-content {
-    grid-column-gap: 16px;
-    grid-row-gap: 16px;
-    flex-direction: column;
-    flex: 1;
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #ededee;
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.experience-item:hover .experience-item-content {
+  border-color: #d2d2d6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .main-info-and-date {
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    justify-content: space-between;
-    align-items: flex-start;
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .main-info {
-    grid-column-gap: 6px;
-    grid-row-gap: 6px;
-    flex-direction: column;
-    flex: 1;
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.role-and-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.h3_title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.current-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #e6f7ec;
+  color: #0b8a36;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid #c2ebd0;
+}
+
+.current-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #0b8a36;
+  border-radius: 50%;
+  animation: liveBeacon 1.6s ease-in-out infinite;
+}
+
+@keyframes liveBeacon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
 }
 
 .key-info {
-    grid-column-gap: 6px;
-    grid-row-gap: 6px;
-    align-items: center;
-    display: flex;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.company-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.emp-type {
+  color: #77777d;
 }
 
 .circle-divider {
-    width: 2px;
-    height: 2px;
-    background-color: #8e8e92;
-    border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  background-color: #8e8e92;
+  border-radius: 50%;
 }
 
-.chips {
-    border: 1px solid #ededee;
-    background-color: white;
-    border-radius: 8px;
-    align-items: center;
-    padding: 6px 10px 6px 12px;
-    display: flex;
+.date-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f7f7f8;
+  border: 1px solid #ededee;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.813rem;
+  color: #444;
+  white-space: nowrap;
 }
 
-/*=============== BREAKPOINTS ===============*/
-/* For large devices */
-@media screen and (max-width: 992px) {
-    .about__container {
-        display: block;
-        grid-template-columns: 1fr;
-        row-gap: 2.5rem;
-    }
-
-    .about__img {
-        display: block;
-        margin: auto;
-        width: 220px;
-    }
-
-    .about__box {
-        padding: 0.75rem 0.5rem;
-    }
-
-    .about__data {
-        text-align: center;
-    }
-
-    .about__info {
-        justify-content: center;
-    }
-
-    .about__description {
-        padding: 0 5rem;
-        margin-bottom: 2rem;
-    }
+.date-icon {
+  font-size: 0.95rem;
+  color: #666;
 }
 
-/* For medium devices */
-@media screen and (max-width: 576px) {
-
-    .main-info-and-date {
-        flex-direction: column;
-    }
-
-    .about_info {
-        display: block;
-        grid-template-columns: repeat(3, 1fr);
-    }
-        
-    .about_description {
-        padding: 0;
-    }
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #77777d;
+  font-size: 0.813rem;
 }
 
-/* For small devices */
-@media screen and (max-width: 350px) {
-    .about__info {
-        display: block;
-        grid-template-columns: repeat(2, 1fr);
-    }
+.location-icon {
+  font-size: 0.95rem;
+  color: #888;
+}
+
+/* Tech Stack Tags */
+.exp-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 2px;
+}
+
+.exp-tech-pill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #f4f4f6;
+  color: #333;
+  padding: 3px 9px;
+  border-radius: 6px;
+  border: 1px solid #e8e8ea;
+  transition: all 0.2s ease;
+}
+
+.experience-item:hover .exp-tech-pill {
+  background-color: #ededee;
+  border-color: #dcdce0;
+}
+
+.exp-tech-pill:hover {
+  background-color: #111 !important;
+  color: #fff !important;
+  border-color: #111 !important;
+  transform: translateY(-1px);
+}
+
+/* Bullet list inside experience cards */
+.ul-block {
+  padding-left: 18px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ul-block li {
+  list-style: disc;
+  color: #4f4f56;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.ul-block li p {
+  color: #4f4f56;
+}
+
+/*=============== QUALIFICATIONS (EDUCATION & CERTS) ===============*/
+.qualification-wrapper {
+  padding: 32px 28px 40px;
+}
+
+.qual-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.qual-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #f6f6f8;
+  border: 1px solid #ededee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qual-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.qual-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.qual-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.qual-card {
+  background-color: #ffffff;
+  border: 1px solid #ededee;
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qual-card:hover {
+  border-color: #d2d2d6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.qual-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.qual-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.qual-date-chip {
+  font-size: 0.813rem;
+  color: #555;
+  background-color: #f7f7f8;
+}
+
+.qual-institution {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.institution-icon,
+.cert-icon {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.qual-card-desc {
+  font-size: 0.875rem;
+  color: #5b5b63;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.margin-top-12 {
+  margin-top: 12px;
+}
+
+.margin-top-32 {
+  margin-top: 36px;
+}
+
+/*=============== RESPONSIVE BREAKPOINTS ===============*/
+@media screen and (max-width: 768px) {
+  .block-header {
+    padding: 20px 18px;
+  }
+
+  .experience-block-wrapper,
+  .qualification-wrapper {
+    padding: 24px 16px 28px 18px;
+  }
+
+  .experience-item-content,
+  .qual-card {
+    padding: 16px;
+  }
+
+  .main-info-and-date {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .date-chip {
+    align-self: flex-start;
+  }
+
+  .experience-tabs-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .exp-tab-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
 }

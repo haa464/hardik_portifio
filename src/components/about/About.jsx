@@ -1,83 +1,307 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./about.css";
-import AboutImg from "../../assets/experice.svg"
+import ExperienceImg from "../../assets/experice.svg";
+import EducationImg from "../../assets/edution.svg";
+import CertificateImg from "../../assets/Certificate..svg";
 
+const experiences = [
+  {
+    id: 1,
+    role: "PHP Developer",
+    company: "PrintPanda India Pvt Ltd",
+    type: "Full-Time",
+    period: "June 2025 - Present",
+    location: "Thane, Maharashtra, India",
+    isCurrent: true,
+    techStack: ["PHP", "WordPress", "WooCommerce", "Custom Plugins", "Action Scheduler", "REST API", "Template Customization"],
+    bullets: [
+      "Created a custom WooCommerce wishlist plugin system inspired by Spotify playlists, allowing users to create, rename, and delete product groups and seamlessly add items to them.",
+      "Customised WooCommerce templates, including shop pages, to support grouped product displays and enhance the overall shopping experience.",
+      "Modified the WooCommerce review system to include a fully customised review section for improved user interaction and social proof.",
+      "Engineered customised email templates in WooCommerce by modifying the header and footer architecture and registering new custom templates on the WooCommerce settings page.",
+      "Built an Action Scheduler background workflow for deleting unreferenced customer-uploaded images and automated recovery emails to users to order products remaining in cart."
+    ]
+  },
+  {
+    id: 2,
+    role: "PHP Developer",
+    company: "InteleCorp Software (I) Pvt. Ltd",
+    type: "Full-Time",
+    period: "June 2024 - June 2025",
+    location: "CBD Belapur, Navi Mumbai, India",
+    isCurrent: false,
+    techStack: ["PHP", "WordPress", "ASP.NET API", "Twilio API", "WooCommerce", "Custom Post Types (CPT)", "SEO", "Elementor", "Oxygen Builder"],
+    bullets: [
+      "Collaborated with the ASP.NET platform to integrate their API with WordPress sites specifically for product pages, enabling dynamic real-time display of product details across 2 production sites.",
+      "Successfully developed a custom WordPress plugin for seamless Twilio integration, enabling automated SMS and WhatsApp messaging via REST API.",
+      "Integrated secure payment gateways with WooCommerce, boosting customer checkout satisfaction and transaction reliability.",
+      "Developed a custom e-commerce platform using WordPress + PHP, eliminating reliance on third-party plugins and improving website performance by 30%.",
+      "Implemented advanced Custom Post Types (CPT) and custom template functions for dynamic, scalable, and maintainable site architectures.",
+      "Integrated SEO best practices by collaborating closely with the SEO team, leading to a 15% increase in organic search traffic.",
+      "Converted intricate Figma designs into pixel-perfect, highly responsive WordPress pages using Elementor & Oxygen Builder."
+    ]
+  },
+  {
+    id: 3,
+    role: "Web Developer",
+    company: "WMI Innovative Solutions Pvt Ltd",
+    type: "Full-Time",
+    period: "August 2022 - December 2023",
+    location: "Vashi, Navi Mumbai, India",
+    isCurrent: false,
+    techStack: ["PHP", "MySQL", "WordPress", "JavaScript", "HTML5/CSS3", "Razorpay", "PayPal", "Speed Optimization"],
+    bullets: [
+      "Optimised website performance, reducing page load times by 80% through script minimisation, intelligent caching, and comprehensive asset optimisation.",
+      "Built and maintained robust back-end logic in PHP, ensuring secure database interactions and efficient server-side processing.",
+      "Developed custom landing pages and elevated UI responsiveness for 5+ clients, guaranteeing flawless cross-platform and mobile compatibility.",
+      "Implemented security updates, vulnerability patches, and bug fixes, reducing error rates and improving site uptime by 25%.",
+      "Integrated popular payment gateways for e-commerce clients, including Razorpay and PayPal, ensuring seamless checkout flows."
+    ]
+  },
+  {
+    id: 4,
+    role: "Web Developer (Internship)",
+    company: "Techsoyd Pvt Ltd",
+    type: "Internship",
+    period: "Dec 2021 - Mar 2022",
+    location: "Nerul, Navi Mumbai, India",
+    isCurrent: false,
+    techStack: ["WordPress", "ThemeForest Themes", "Elementor", "WPBakery", "Adobe Photoshop", "Razorpay", "E-Commerce"],
+    bullets: [
+      "Customised commercial WordPress themes from ThemeForest, modifying templates, typography, and visual assets to match client branding.",
+      "Utilised Adobe Photoshop to compress images and optimize web assets, markedly increasing overall website speed.",
+      "Built and styled responsive website pages and modules using visual builders such as Elementor and WPBakery.",
+      "Configured e-commerce websites by cataloging products, configuring shipping plugins, and integrating payment gateways like Razorpay.",
+      "Developed proactive communication and requirement gathering skills, collaborating with clients to deliver tailored web solutions."
+    ]
+  }
+];
+
+const educationData = [
+  {
+    id: 1,
+    title: "Bachelor of Science in Information Technology (B.Sc IT)",
+    institution: "PILLAI COLLEGE OF ARTS, COMMERCE & SCIENCE",
+    location: "Panvel, Navi Mumbai, Maharashtra",
+    period: "July 2019 - February 2022",
+    description: "Core coursework in Web Technologies, Database Management Systems, Software Engineering, Object-Oriented Programming, and Data Structures."
+  }
+];
+
+const certificationData = [
+  {
+    id: 1,
+    title: "HTML, CSS, and JavaScript for Web Developers",
+    issuer: "Johns Hopkins University (Coursera)",
+    period: "July 2020 - August 2020",
+    skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Web Architecture"]
+  },
+  {
+    id: 2,
+    title: "Crash Course on Python",
+    issuer: "Google",
+    period: "May 2020 - June 2020",
+    skills: ["Python Programming", "Automation", "Data Structures", "Problem Solving"]
+  }
+];
 
 const About = () => {
+  const [activeTab, setActiveTab] = useState("experience");
+
   return (
     <section className="about section" id="experience">
-        <div className="container">
-          <div class="block block-paddings">
-            <div class="block-header">
-              <div class="block-icon-wrapper"><img src={AboutImg} alt="Experience" /></div>
-                <div class="wrapper max-width-400"><h2 class="h2 margin-bottom-12">Work Experience</h2>
-                <p class="medium-m">Proven track record as a front-end and WordPress Developer, delivering impactful results across industries.</p>
+      <div className="container">
+        <div className="block block-paddings">
+          {/* Header with Title and Interactive Navigation Tabs */}
+          <div className="block-header">
+            <div className="block-header-top">
+              <div className="block-icon-wrapper">
+                <img 
+                  src={activeTab === "experience" ? ExperienceImg : EducationImg} 
+                  alt={activeTab === "experience" ? "Experience" : "Education"} 
+                  className="tab-header-icon"
+                />
+              </div>
+              <div className="wrapper max-width-600">
+                <h2 className="h2 margin-bottom-12">
+                  {activeTab === "experience" ? "Work Experience" : "Education & Certifications"}
+                </h2>
+                <p className="medium-m experience-intro">
+                  {activeTab === "experience" 
+                    ? "Proven track record as a PHP, WordPress & Front-end Developer, building custom plugins, REST API integrations, and scalable e-commerce systems." 
+                    : "Academic background in Information Technology coupled with industry certifications from world-class institutions."}
+                </p>
               </div>
             </div>
-            <div className="experience-block-wrapper">
-              <div class="experience-line-wrapper">
-                <div class="experience-line"></div>
-              </div>
-              <div className="experience-items-wrapper">
-                <div className="experience-item">
-                  <div className="experience-item-ellipse-wrapper">
-                    <div className="experience-item-ellipse"></div>
-                  </div>
-                  <div className="experience-item-content">
-                        <div className="main-info-and-date">
-                          <div className="main-info">
-                            <h3 class="h3_title">Web Developer</h3>
-                            <div class="key-info"><div class="medium-s">WMI Innovative Solutions Pvt Ltd</div><div class="circle-divider"></div><div class="medium-s">Full-Time</div></div>
-                          </div>
-                          <div class="chips icon-chips"><div class="medium-s text-color-grey-90">August 2022 - December 2023</div></div>
-                        </div>
-                        <div class="location"><div class="medium-s">Vashi, Navi Mumbai, India</div></div>
-                        <ul className='ul-block'>
-                          <li className='medium-s max-width-400'>
-                            <p>I optimized the UI load times and performance of a website by fixing bugs, which resulted in an 80% improvement. I maintained a WordPress website and implemented changes as per the client's requirements. I designed the website in WordPress using HTML, CSS, and JavaScript, ensuring compatibility for both mobile and desktop versions across all platforms.</p>
-                          </li>
-                          <li>
-                            <p>Furthermore, I worked with a team of eight web developers and provided end-to-end solutions for five clients. I maintained the back-end of the website using PHP and updated the c-panel regularly to resolve errors on a daily basis. Additionally, I created a landing page for the client with a simple design and uploaded it to the c-panel.</p>
-                          </li>
-                          <li>
-                            <p>I collaborated with the SEO team to implement changes to the website's content and ensured precise execution of their suggestions. My professionalism and expertise resulted in optimal website performance, meeting the client's expectations.</p>
-                          </li>
-                        </ul>
-                  </div>
-                </div>
-                <div className="experience-item">
-                  <div className="experience-item-ellipse-wrapper">
-                    <div className="experience-item-ellipse"></div>
-                  </div>
-                  <div className="experience-item-content">
-                        <div className="main-info-and-date">
-                          <div className="main-info">
-                            <h3 class="h3_title">Web Developer</h3>
-                            <div class="key-info"><div class="medium-s">Techsoyd Pvt Ltd</div><div class="circle-divider"></div><div class="medium-s">Full-Time</div></div>
-                          </div>
-                          <div class="chips icon-chips"><div class="medium-s text-color-grey-90">March 2022- July 2022</div></div>
-                        </div>
-                        <div class="location"><div class="medium-s">Nerul, Navi Mumbai, India</div></div>
-                        <ul className='ul-block'>
-                          <li className='medium-s max-width-400'>
-                            <p>I have experience working with WordPress themes from Themeforest, including uploading themes and making changes to content and images to meet clients' requirements. I have also utilized platforms like Adobe Photoshop to compress images and convert them to other formats, which improves website speed. Additionally, I have used plugins such as Elementor and WPBakery to make style adjustments to basic website themes. </p>
-                          </li>
-                          <li>
-                            <p>In terms of e-commerce, I am currently learning about plugins that help build e-commerce websites. This includes adding products to websites and integrating payment gateways like Razorpay. Furthermore, I am exploring shipping plugins, which ensure prompt delivery of products to customers. </p>
-                          </li>
-                          <li>
-                            <p>Furthermore, I am developing my communication skills by learning how to effectively engage with clients about their projects. Building a healthy relationship with clients aids me in acquiring a comprehensive understanding of their website needs.</p>
-                          </li>
-                        </ul>
-                  </div>
-                </div>
-              </div>
-              
+
+            {/* Tab Toggle Controls */}
+            <div className="experience-tabs-wrapper">
+              <button
+                type="button"
+                className={`exp-tab-btn ${activeTab === "experience" ? "exp-tab-active" : ""}`}
+                onClick={() => setActiveTab("experience")}
+              >
+                <i className="uil uil-briefcase-alt exp-tab-icon"></i>
+                <span>Work Experience</span>
+                <span className="exp-tab-badge">{experiences.length}</span>
+              </button>
+
+              <button
+                type="button"
+                className={`exp-tab-btn ${activeTab === "education" ? "exp-tab-active" : ""}`}
+                onClick={() => setActiveTab("education")}
+              >
+                <i className="uil uil-graduation-cap exp-tab-icon"></i>
+                <span>Education & Certs</span>
+                <span className="exp-tab-badge">{educationData.length + certificationData.length}</span>
+              </button>
             </div>
           </div>
-        </div>
-    </section>
-  )
-}
 
-export default About
+          {/* TAB 1: WORK EXPERIENCE */}
+          {activeTab === "experience" && (
+            <div className="experience-block-wrapper tab-content-animated">
+              <div className="experience-line-wrapper">
+                <div className="experience-line"></div>
+              </div>
+
+              <div className="experience-items-wrapper">
+                {experiences.map((exp, index) => (
+                  <div 
+                    className="experience-item" 
+                    key={exp.id}
+                    style={{ animationDelay: `${index * 0.12}s` }}
+                  >
+                    <div className="experience-item-ellipse-wrapper">
+                      <div className={`experience-item-ellipse ${exp.isCurrent ? 'ellipse-current' : ''}`}></div>
+                      {exp.isCurrent && <div className="ellipse-pulse"></div>}
+                    </div>
+
+                    <div className="experience-item-content">
+                      <div className="main-info-and-date">
+                        <div className="main-info">
+                          <div className="role-and-badge">
+                            <h3 className="h3_title">{exp.role}</h3>
+                            {exp.isCurrent && (
+                              <span className="current-badge">
+                                <span className="current-dot"></span> Present
+                              </span>
+                            )}
+                          </div>
+                          <div className="key-info">
+                            <span className="medium-s company-name">{exp.company}</span>
+                            <div className="circle-divider"></div>
+                            <span className="medium-s emp-type">{exp.type}</span>
+                          </div>
+                        </div>
+
+                        <div className="chips icon-chips date-chip">
+                          <i className="uil uil-calendar-alt date-icon"></i>
+                          <span className="medium-s text-color-grey-90">{exp.period}</span>
+                        </div>
+                      </div>
+
+                      <div className="location">
+                        <i className="uil uil-map-marker location-icon"></i>
+                        <span className="medium-s">{exp.location}</span>
+                      </div>
+
+                      {/* Tech stack tags */}
+                      <div className="exp-tech-tags">
+                        {exp.techStack.map((tech, i) => (
+                          <span className="exp-tech-pill" key={i}>{tech}</span>
+                        ))}
+                      </div>
+
+                      <ul className="ul-block">
+                        {exp.bullets.map((bullet, i) => (
+                          <li key={i} className="medium-s">
+                            <p>{bullet}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: EDUCATION & CERTIFICATIONS */}
+          {activeTab === "education" && (
+            <div className="qualification-wrapper tab-content-animated">
+              {/* Education Sub-Section */}
+              <div className="qual-section">
+                <div className="qual-section-header">
+                  <div className="qual-icon-box">
+                    <img src={EducationImg} alt="Education" className="qual-icon" />
+                  </div>
+                  <h3 className="qual-title">Higher Education</h3>
+                </div>
+
+                <div className="qual-cards-grid">
+                  {educationData.map((edu) => (
+                    <div className="qual-card" key={edu.id}>
+                      <div className="qual-card-header">
+                        <h4 className="qual-card-title">{edu.title}</h4>
+                        <span className="chips qual-date-chip">
+                          <i className="uil uil-calendar-alt date-icon"></i>
+                          {edu.period}
+                        </span>
+                      </div>
+                      <div className="qual-institution">
+                        <i className="uil uil-building institution-icon"></i>
+                        <span>{edu.institution}</span>
+                      </div>
+                      <div className="location">
+                        <i className="uil uil-map-marker location-icon"></i>
+                        <span>{edu.location}</span>
+                      </div>
+                      <p className="qual-card-desc">{edu.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Certifications Sub-Section */}
+              <div className="qual-section margin-top-32">
+                <div className="qual-section-header">
+                  <div className="qual-icon-box">
+                    <img src={CertificateImg} alt="Certifications" className="qual-icon" />
+                  </div>
+                  <h3 className="qual-title">Certifications & Training</h3>
+                </div>
+
+                <div className="qual-cards-grid">
+                  {certificationData.map((cert) => (
+                    <div className="qual-card" key={cert.id}>
+                      <div className="qual-card-header">
+                        <h4 className="qual-card-title">{cert.title}</h4>
+                        <span className="chips qual-date-chip">
+                          <i className="uil uil-calendar-alt date-icon"></i>
+                          {cert.period}
+                        </span>
+                      </div>
+                      <div className="qual-institution">
+                        <i className="uil uil-award cert-icon"></i>
+                        <span>Issued by <strong>{cert.issuer}</strong></span>
+                      </div>
+                      <div className="exp-tech-tags margin-top-12">
+                        {cert.skills.map((skill, i) => (
+                          <span className="exp-tech-pill" key={i}>{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
